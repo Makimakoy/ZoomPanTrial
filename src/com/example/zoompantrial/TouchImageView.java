@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
+import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -65,6 +65,8 @@ public class TouchImageView extends ImageView {
 	float preFocusY;
 	int counter = 0;
 	BufferedReader br;
+	ArrayList XList = new ArrayList();
+	ArrayList YList = new ArrayList();
 	///
 
 	ScaleGestureDetector mScaleDetector;
@@ -325,6 +327,7 @@ public class TouchImageView extends ImageView {
 				if((line = br.readLine())!=null){
 					temp2 = line;
 					canvas.drawPoint(Integer.parseInt(temp1), Integer.parseInt(temp2), p);
+					storeXY(temp1,temp2);
 				}
 				else
 					tuloy=false;
@@ -356,6 +359,18 @@ public class TouchImageView extends ImageView {
 		int X = (x2-x1)*(x2-x1);
 		int Y = (y2-y1)*(y2-y1);
 		return (int)Math.sqrt(X+Y);
+	}
+	
+	public void storeXY(String x,String y){
+		XList.add(x);
+		YList.add(y);
+	}
+	
+	public ArrayList calculateShortestPath(ArrayList X,ArrayList Y, int start, int destination){
+		ArrayList shortest =  new ArrayList();
+		
+		
+		return shortest;
 	}
 
 }
